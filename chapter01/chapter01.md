@@ -50,7 +50,7 @@ https://github.com/OBHAR/llm-data-analysis-study/blob/main/chapter01/chapter01.m
 
 ### Evidence
 
-![STEP 1 질문 구체화 결과](images/step01_question.svg)
+![STEP 1 질문 구체화 결과](images/step01_question.png)
 
 ---
 
@@ -101,7 +101,7 @@ products.product_id → order_items.product_id
 
 ### Evidence
 
-![STEP 2 데이터 구조 확인](images/step02_data_structure.svg)
+![STEP 2 데이터 구조 확인](images/step02_data_structure.png)
 
 ---
 
@@ -150,7 +150,7 @@ LLM 답변은 실제 컬럼 타입·결측·중복을 알지 못한다. 따라�
 
 ### Evidence
 
-![STEP 3 LLM Prompt와 응답](images/step03_llm_response.svg)
+![STEP 3 LLM Prompt와 응답](images/step03_llm_response.png)
 
 ---
 
@@ -186,9 +186,6 @@ LLM 제안을 검증하지 않으면 존재하지 않는 컬럼, 불명확한 �
 
 현재 확인은 컬럼·관계 중심이다. 실제 제출 전에는 행 수, 결측, 중복 주문, 6월 데이터의 완전성을 추가 점검해야 한다.
 
-### Evidence
-
-![STEP 4 LLM 제안 검증](images/step04_validation.svg)
 
 ---
 
@@ -210,9 +207,6 @@ Prompt Log에는 LLM이 초안을 제안한 부분과 사람이 실제 데이터
 
 분석 과정에서 어떤 제안을 채택하거나 보류했는지 기록해야 나중에 결과가 나온 근거와 책임 범위를 재검토할 수 있다.
 
-### Evidence
-
-![STEP 5 Prompt Log](images/step05_prompt_log.svg)
 
 ---
 
@@ -284,7 +278,9 @@ Python·가상환경·Jupyter 설정이 완료되면 다음 Chapter에서 실제
 
 ### Evidence
 
-![월별 completed 주문 결과](images/step06_monthly_results.svg)
+![월별 completed 주문 결과](images/step06_monthly_results.png)
+
+![월별 분석 실행 코드](images/step06_analysis_code.png)
 
 ### 이번 장에서 가장 중요하다고 생각한 내용
 
