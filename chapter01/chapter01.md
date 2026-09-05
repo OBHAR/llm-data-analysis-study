@@ -196,11 +196,7 @@ LLM 제안을 검증하지 않으면 존재하지 않는 컬럼이나 불명확�
 
 ### Evidence
 
-실제 데이터 연결·집계가 실행되었음을 보여 주는 코드와 결과입니다.
-
-![월별 분석 실행 코드](images/step06_analysis_code.png)
-
-![월별 completed 주문 결과](images/step06_monthly_results.png)
+![STEP 4 LLM 제안 검증](images/step04_validation.png)
 
 ---
 
