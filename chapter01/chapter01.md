@@ -156,31 +156,39 @@ LLM 답변은 실제 컬럼 타입·결측·중복을 알지 못한다. 특히 �
 
 ## 4. LLM 제안 검증
 
+### 실제 LLM 제안
+
+> 완료된 주문의 월별 매출과 주문 건수는 기간별로 어떻게 변하는가?
+
+LLM은 이 질문에 `orders.csv`와 `order_items.csv`가 필요하며, `orders`의 `order_id`, `order_status`, `order_date` 또는 `created_at`, `order_items`의 `order_id`, `quantity`, `unit_price` 또는 `price`를 확인하라고 제안했다.
+
 | 검증 항목 | 확인 내용 |
 | --- | --- |
-| 선택한 LLM 제안 | 월별 주문 수·주문당 평균 금액·카테고리 변화를 함께 확인 |
-| 필요한 파일 | `orders.csv`, `order_items.csv`, `products.csv` 존재 확인 |
-| 필요한 컬럼 | `order_date`, `order_status`, `quantity`, `unit_price`, `category` 확인 |
+| 선택한 LLM 제안 | 완료된 주문의 월별 매출과 주문 건수 비교 |
+| LLM이 제안한 파일 | `orders.csv`, `order_items.csv` |
+| 실제 확인한 파일 | `orders.csv`, `order_items.csv` 존재; 카테고리 분석 확장을 위해 `products.csv` 추가 |
+| LLM이 제안한 컬럼 후보 | `order_date` 또는 `created_at`, `quantity`, `unit_price` 또는 `price` |
+| 실제 확인한 컬럼 | `order_date`, `order_status`, `quantity`, `unit_price`, `category` |
+| 수정 사항 | `created_at`과 `price`는 없으므로 각각 `order_date`, `unit_price`를 사용 |
 | 계산 범위 | 2026-01-01~2026-06-30, `completed` 주문, 매출=`quantity × unit_price` |
-| 실제 데이터 확인 필요 여부 | 날짜 완전성, 결측·중복, 주문 상태 처리 기준은 추가 확인 필요 |
 | 원인 단정 여부 | 원인을 단정하지 않고 관찰된 차이만 기술 |
 | 최종 판단 | 수정 후 사용 |
 
 ### 내가 수정한 내용
 
-LLM의 일반적인 “월별 매출 비교” 제안을 2026년 1~6월, `completed` 주문, 주문 수·주문당 평균 금액·카테고리 매출이라는 구체적 기준으로 수정했다.
+LLM의 “월별 매출과 주문 건수” 제안을 실제 스키마에 맞게 수정했다. 날짜는 `created_at`가 아닌 `order_date`를 사용했고, 금액은 `price`가 아닌 `quantity × unit_price`로 계산했다. 또한 원래 선택한 분석 질문에 맞춰 주문당 평균 금액과 `products.category` 기반 카테고리 변화를 추가했다.
 
 ### 결과 관찰
 
-`orders`에는 주문일과 주문 상태가, `order_items`에는 수량과 단가가, `products`에는 카테고리가 존재했다. 따라서 제안한 계산은 실제 데이터 구조와 연결된다.
+`orders`에는 `order_date`와 `order_status`가, `order_items`에는 `quantity`와 `unit_price`가, `products`에는 `category`가 존재했다. 반면 LLM이 후보로 제시한 `created_at`과 `price`는 실제 파일에 없었다.
 
 ### 나의 해석과 판단
 
-질문의 방향은 사용할 수 있지만, 원본 제안에는 기간과 매출 계산식이 빠져 있었다. 이 기준을 보완한 뒤에만 분석 질문으로 사용하기로 판단했다.
+LLM의 첫 번째 제안은 실제 데이터로 수행할 수 있었지만, 컬럼 후보와 계산식은 그대로 확정할 수 없었다. 실제 컬럼으로 교체하고 분석 범위를 명시한 뒤에만 사용하기로 판단했다.
 
 ### 업무·분석적 의미
 
-LLM 제안을 검증하지 않으면 존재하지 않는 컬럼, 불명확한 집계 범위, 근거 없는 원인 해석을 제출할 수 있다.
+LLM 제안을 검증하지 않으면 존재하지 않는 컬럼이나 불명확한 계산식을 전제로 분석할 수 있다. 제안·검증·수정 과정을 남기면 결과가 나온 근거를 재현하고 점검하기 쉬워진다.
 
 ### 한계와 추가 확인 사항
 
@@ -193,7 +201,6 @@ LLM 제안을 검증하지 않으면 존재하지 않는 컬럼, 불명확한 �
 ![월별 분석 실행 코드](images/step06_analysis_code.png)
 
 ![월별 completed 주문 결과](images/step06_monthly_results.png)
-
 
 ---
 
