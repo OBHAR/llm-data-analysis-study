@@ -239,22 +239,46 @@ Prompt Log에는 LLM이 초안을 제안한 부분과 사람이 실제 데이터
 
 ### 내 환경 상태
 
-- [x] 아직 환경설정 전이라 Notebook 위치만 확인했습니다.
-- [ ] 환경설정이 완료되어 Notebook을 직접 실행했습니다.
+- [ ] 아직 환경설정 전이라 Notebook 위치만 확인했습니다.
+- [x] 환경설정이 완료되어 Notebook을 직접 실행했습니다.
+
+### 실행한 코드
+
+```python
+from pathlib import Path
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+DATA_DIR = Path('../data/raw')
+sns.set_theme(style='whitegrid')
+
+customers = pd.read_csv(DATA_DIR / 'customers.csv')
+print('DATA_DIR:', DATA_DIR.resolve())
+customers.head()
+```
+
+### 실행 결과
+
+VS Code의 Jupyter Notebook에서 import 셀이 오류 없이 실행되었다. `DATA_DIR`은 프로젝트의 `data/raw` 폴더를 가리켰고, `customers.csv`의 처음 5개 행이 표로 출력되었다.
 
 ### 결과 관찰
 
-Chapter 01 Notebook은 기본 import와 데이터 경로를 준비한 starter scaffold이며, 본격 분석 결과를 포함한 Notebook은 아니다.
+`DATA_DIR`이 `C:\\Users\\ojh23\\Documents\\projects\\llm-data-analysis-course\\data\\raw`로 확인되었다. pandas, numpy, matplotlib, seaborn을 불러온 뒤 `customers.csv`를 정상적으로 읽을 수 있었다.
 
 ### 나의 해석과 판단
 
-이번 장의 핵심은 복잡한 코드를 완성하는 것보다 질문 정의, LLM 초안, 실제 데이터 검증의 흐름을 이해하는 데 있다고 판단했다.
+현재 Notebook은 본격 분석 결과를 만드는 완성 Notebook이 아니라, 프로젝트 가상환경·패키지·데이터 경로가 올바르게 연결되었는지 확인하는 starter scaffold라고 이해했다.
 
 ### 한계와 추가 확인 사항
 
-Python·가상환경·Jupyter 설정이 완료되면 다음 Chapter에서 실제 DataFrame 로드, 타입 점검, 결측 확인을 수행해야 한다.
+현재는 기본 import와 고객 데이터 로드까지만 확인했다. Chapter 02~03에서는 Notebook 커널이 계속 프로젝트의 `.venv`를 사용하도록 확인하고, 데이터 타입·결측·중복 등 기본 품질 점검을 추가로 수행해야 한다.
 
-> 환경설정 전이므로 Notebook 실행 Evidence는 생략했다.
+### Evidence
+
+![STEP 7 Notebook 실행 결과](images/step07_notebook_result.png)
 
 ---
 
