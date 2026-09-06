@@ -5,7 +5,7 @@
 - 이름: 오병희
 - GitHub ID: OBHAR
 - 개인 저장소명: `llm-data-analysis-study`
-- 작성일: 2026-09-05
+- 작성일: 2026-09-06
 - 사용한 LLM: ChatGPT
 
 ### 최종 제출 URL
