@@ -2,7 +2,7 @@
 
 ## 0. 제출 정보
 
-- 이름:
+- 이름: 오병희
 - GitHub ID: OBHAR
 - 개인 저장소: `llm-data-analysis-study`
 - 작성일: 2026-09-15
