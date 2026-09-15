@@ -1,7 +1,5 @@
 # Chapter 02 제출 답안. VS Code에서 시작하는 데이터 분석 환경
 
-> 최종 파일은 개인 GitHub 저장소의 `chapter02/chapter02.md`로 저장합니다.
-
 ## 0. 제출 정보
 
 - 이름:
@@ -255,4 +253,4 @@ VS Code Notebook 커널을 프로젝트 .venv와 동일하게 맞추는 설정
 - [x] Secret/개인정보가 없습니다.
 - [x] GitHub에서 이미지가 정상 표시됩니다.
 - [x] 개인 저장소에 `chapter02/chapter02.md`를 업로드했습니다.
-- [ ] 저장소 URL이 아니라 최종 파일 URL을 제출합니다.
+- [x] 저장소 URL이 아니라 최종 파일 URL을 제출합니다.
